@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_09_140554) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_09_141941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "start_at"
+    t.date "end_at"
+    t.integer "no_of_nights", default: 1, null: false
+    t.string "status", default: "pending", null: false
+    t.integer "payout_amount_cents", default: 0, null: false
+    t.integer "security_amount_cents", default: 0, null: false
+    t.integer "total_amount_cents", default: 0, null: false
+    t.string "currency", default: "AUD", null: false
+    t.jsonb "details", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["currency"], name: "index_reservations_on_currency"
+    t.index ["end_at"], name: "index_reservations_on_end_at"
+    t.index ["start_at"], name: "index_reservations_on_start_at"
+    t.index ["status"], name: "index_reservations_on_status"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
@@ -24,4 +44,5 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_09_140554) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "reservations", "users"
 end
