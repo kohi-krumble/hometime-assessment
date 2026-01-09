@@ -75,4 +75,39 @@ class ReservationTest < ActiveSupport::TestCase
       create(:reservation, status: "invalid_status")
     end
   end
+
+  test "Successfully creates a reservation with custom details" do
+    custom_details = {
+      number_of_guests: 2,
+      localized_description: "2 guests",
+      number_of_adults: 2,
+      number_of_children: 0,
+      number_of_infants: 0
+    }
+    reservation = create(:reservation, details: custom_details)
+
+    assert reservation.persisted?
+    assert_equal custom_details, reservation.details.to_h
+  end
+
+  test "Fails to create a reservation without details" do
+    reservation = build(:reservation, details: nil)
+
+    assert_not reservation.valid?
+    assert_includes reservation.errors[:details], "number_of_guests must be positive"
+  end
+
+  test "Fails to create a reservation with inconsistent guest counts in details" do
+    inconsistent_details = {
+      number_of_guests: 3,
+      localized_description: "3 guests",
+      number_of_adults: 2,
+      number_of_children: 0,
+      number_of_infants: 0
+    }
+    reservation = build(:reservation, details: inconsistent_details)
+
+    assert_not reservation.valid?
+    assert_includes reservation.errors[:details], "number_of_guests does not match the sum of adults, children, and infants"
+  end
 end
