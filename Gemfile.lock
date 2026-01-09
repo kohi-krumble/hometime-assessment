@@ -126,8 +126,7 @@ GEM
       net-smtp
     marcel (1.1.0)
     mini_mime (1.1.5)
-    minitest (6.0.1)
-      prism (~> 1.5)
+    minitest (5.27.0)
     monetize (2.0.0)
       money (~> 7.0)
     money (7.0.2)
@@ -173,7 +172,6 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.7.0)
     psych (5.3.1)
       date
       stringio
@@ -255,6 +253,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   jbuilder
+  minitest (< 6)
   money-rails (~> 2.0)
   pg (~> 1.1)
   puma (>= 5.0)
