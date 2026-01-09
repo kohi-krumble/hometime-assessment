@@ -6,11 +6,7 @@ class Reservation::DetailsType < ActiveRecord::Type::Value
   end
 
   def cast(value)
-    if value.present?
-      Reservation::Details.new(value)
-    else
-      super
-    end
+    Reservation::Details.new(value)
   end
 
   # convert database value to a Ruby object

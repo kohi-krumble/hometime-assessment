@@ -5,11 +5,11 @@ class Reservation::Details
              number_of_children number_of_infants].freeze
   attr_reader(*ATTRS, :error)
 
-  def initialize(attributes = {})
-    attributes.symbolize_keys!
+  def initialize(attributes)
+    symbolized_attributes = attributes.present? ? attributes.symbolize_keys : {}
 
     ATTRS.each do |key|
-      instance_variable_set("@#{key}", attributes[key])
+      instance_variable_set("@#{key}", symbolized_attributes[key])
     end
     @error = nil
   end
