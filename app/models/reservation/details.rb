@@ -33,4 +33,10 @@ class Reservation::Details
     @error = 'number_of_guests must be positive'
     return false
   end
+
+  def to_h
+    ATTRS.each_with_object({}) do |key, hash|
+      hash[key] = send(key)
+    end
+  end
 end
