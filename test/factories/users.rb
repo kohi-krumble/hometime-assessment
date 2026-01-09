@@ -3,7 +3,7 @@ FactoryBot.define do
     email { "test@example.com" }
     first_name { "Test user" }
     last_name { "Last name" }
-    phone_numbers { [] }
+    phone_numbers { ["639123456789", "639987654321"] }
 
     trait :no_email do
       email { "" }
@@ -11,10 +11,6 @@ FactoryBot.define do
 
     trait :invalid_email do
       email { "invalid email" }
-    end
-
-    trait :with_phone_numbers do
-      phone_numbers { ["639123456789", "639123456789"] }
     end
   end
 end

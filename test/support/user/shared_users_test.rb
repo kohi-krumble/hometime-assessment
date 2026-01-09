@@ -28,5 +28,18 @@ module SharedUsersTest
       assert_not user2.valid?
       assert_includes user2.errors[:email], "has already been taken"
     end
+
+    test "Fails to create user with no phone numbers" do
+      user = build(:user, phone_numbers: [])
+      assert_not user.valid?
+      assert_includes user.errors[:phone_numbers], "should have at least one phone number"
+    end
+
+    test "Fails to create user with invalid phone numbers" do
+      user = build(:user, phone_numbers: ["12345", "invalid_number"])
+      assert_not user.valid?
+      assert_includes user.errors[:phone_numbers], "12345 is not valid"
+      assert_includes user.errors[:phone_numbers], "invalid_number is not valid"
+    end
   end
 end
