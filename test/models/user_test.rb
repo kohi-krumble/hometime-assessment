@@ -27,4 +27,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not user2.valid?
     assert_includes user2.errors[:email], "has already been taken"
   end
+
+  test "User model should not have reservations association" do
+    associations = User.reflect_on_all_associations.map(&:name)
+
+    assert_not_includes associations, :reservations, "User model incorrectly has a :reservations association"
+  end
 end
