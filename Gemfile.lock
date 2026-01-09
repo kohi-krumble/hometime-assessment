@@ -106,6 +106,9 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    jbuilder (2.14.1)
+      actionview (>= 7.0.0)
+      activesupport (>= 7.0.0)
     logger (1.7.0)
     loofah (2.25.0)
       crass (~> 1.0.2)
@@ -235,6 +238,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  jbuilder
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.6)
