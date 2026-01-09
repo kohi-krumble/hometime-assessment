@@ -1,4 +1,6 @@
 class Reservation < ApplicationRecord
+  belongs_to :guest, class_name: 'User', foreign_key: 'user_id'
+
   validates :start_date, comparison: { greater_than: -> { Date.current } }
   validate :end_date_after_start_date
   validates :no_of_nights, numericality: { only_integer: true, greater_than: 0 }
