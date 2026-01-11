@@ -20,9 +20,11 @@ class ReservationDurationValidator < ActiveModel::Validator
       record.errors.add(:end_at, (options[:message] || "must be after the start date"))
       return
     end
-    
+
+    scope = Reservation.accepted.where("start_at < ? AND end_at > ?", record.end_at, record.start_at)
+    scope = scope.where.not(id: record.id) if !record.new_record?
     # no overlap
-    return if Reservation.accepted.where("start_at < ? AND end_at > ?", record.end_at, record.start_at).none?
+    return if scope.none?
     
     record.errors.add(:base, (options[:message] || "selected date is not available"))
   end
