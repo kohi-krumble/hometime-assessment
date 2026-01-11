@@ -11,7 +11,7 @@ class CreateReservation
     return errors.add(:guest, 'not found') if guest.blank?
 
     reservation = Reservation.create(user_id: guest.id, **@params[:reservation])
-    return errors.add(:reservation, reservation.errors.full_messages) if !reservation.persisted?
+    return errors.add(:reservation, reservation.errors.full_messages.to_sentence) if !reservation.persisted?
 
     return reservation
   rescue StandardError => e
