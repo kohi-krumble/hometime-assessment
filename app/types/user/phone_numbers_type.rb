@@ -7,8 +7,9 @@ class User::PhoneNumbersType < ActiveRecord::Type::Value
 
   def cast(value)
     return [] if value.blank?
+    phone_numbers = Array(value)
 
-    value.map do |phone_number|
+    phone_numbers.map do |phone_number|
       Phonelib.parse(phone_number)
     end
   end
