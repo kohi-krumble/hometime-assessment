@@ -5,7 +5,7 @@ module SharedUsersTest
     test "Creates user with valid email" do
       user = create(:user)
       assert user.persisted?
-      assert_match Rails.application.config.email_regex, user.email
+      assert_match EmailValidator::EMAIL_REGEX, user.email
     end
 
     test "Fails to create user with no email" do

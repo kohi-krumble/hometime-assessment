@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   validates_presence_of :first_name
-  validates :email, presence: true, uniqueness: true,
-            format: { with: Rails.application.config.email_regex }
+  validates :email, presence: true, uniqueness: true, email: true
   validate :all_phone_number_must_be_valid
 
   enum user_type: {

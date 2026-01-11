@@ -28,6 +28,5 @@ module HometimeAssessment
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    config.email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]{2,}\z/i
   end
 end
