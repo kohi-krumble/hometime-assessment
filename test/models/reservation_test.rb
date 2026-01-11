@@ -94,7 +94,7 @@ class ReservationTest < ActiveSupport::TestCase
     reservation = build(:reservation, details: nil)
 
     assert_not reservation.valid?
-    assert_includes reservation.errors[:details], "number_of_guests must be positive"
+    assert_includes reservation.errors[:details], "details can't be blank"
   end
 
   test "Fails to create a reservation with inconsistent guest counts in details" do
@@ -109,5 +109,19 @@ class ReservationTest < ActiveSupport::TestCase
 
     assert_not reservation.valid?
     assert_includes reservation.errors[:details], "number_of_guests does not match the sum of adults, children, and infants"
+  end
+
+  test "Fails to create a reservation with non-positive number_of_guests in details" do
+    invalid_details = {
+      number_of_guests: 0,
+      localized_description: "0 guests",
+      number_of_adults: 0,
+      number_of_children: 0,
+      number_of_infants: 0
+    }
+    reservation = build(:reservation, details: invalid_details)
+
+    assert_not reservation.valid?
+    assert_includes reservation.errors[:details], "number_of_guests must be positive"
   end
 end
