@@ -1,7 +1,7 @@
 {
   "reservation": {
-    "start_date": "2021-03-12",
-    "end_date": "2021-03-16",
+    "start_date": "2026-05-12",
+    "end_date": "2026-05-16",
     "expected_payout_amount": "3800.00",
     "guest_details": {
       "localized_description": "4 guests",
