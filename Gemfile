@@ -34,10 +34,12 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'factory_bot_rails'
   gem "minitest", "< 6"
+  gem "mocha", "~> 2.1"
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
 
