@@ -56,7 +56,7 @@ Start the server
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| Authorization | `Bearer Token` | **Required**. Your API token ([how to generate token](#generaate-token)) |
+| Authorization | `Bearer Token` | **Required**. Your API token ([how to generate token](#generate-your-token)) |
 | Payload | `JSON` | **Required**. Reservation and guest details ([See sample payloads](#sample-payloads)) |
 
 #### Payload version 1
@@ -209,6 +209,7 @@ To run tests, run the following command
 ```
 
 #### Generate your token
+<a name="generate-your-token"></a>
 ``` bash
     rails api:generate_token
     # > Generated JWT token:
@@ -267,3 +268,8 @@ curl -X POST http://localhost:3000/api/reservations \
 -H "Authorization: Bearer your-token" \
 -d @path/to/project/test/fixtures/files/reservation/payload-v1.json
 ```
+
+#### Using Postman
+https://github.com/user-attachments/assets/5a7f2c80-455f-4f4f-bc3c-f55ff489aa94
+
+
