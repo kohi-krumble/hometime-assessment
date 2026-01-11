@@ -17,8 +17,8 @@ This app has one end point that can support two different payload structure.
 ## Run Locally
 
 Prerequisite
-- [Rails setup on your machine](#rails-setup)
-- [PostgreSQL installation](#postgresql-setup)
+- [Setup Rails on your machine](#rails-setup)
+- [PostgreSQL installation](#postgresql-installation)
 - Or run with [Docker](#docker-setup)
 
 Clone the project
@@ -35,6 +35,17 @@ Go to the project directory
 Install dependencies
 ```bash
   bundle install
+```
+
+Generaate credentials key
+``` bash
+  # development
+  EDITOR="your-preferred-editor --wait" rails credentials:edit --environment development
+  # This will create a development.key file on you config/credentials/
+
+  # production
+  EDITOR="your-preferred-editor --wait" rails credentials:edit --environment production
+  # This will create a production.key file on you config/credentials/
 ```
 
 Initialize database
@@ -197,7 +208,7 @@ To run tests, run the following command
     #   ID: 4
     #   Email: testguest2@example.com
 
-    # Docker
+    # When using Docker
     # get container name
     docker ps
     # > CONTAINER ID   IMAGE    COMMAND     CREATED     STATUS  PORTS   NAMES
@@ -215,7 +226,7 @@ To run tests, run the following command
     # > Generated JWT token:
     #   your-generated-token
 
-    # Docker
+    # When using Docker
     # get container name
     docker ps
     # > CONTAINER ID   IMAGE    COMMAND     CREATED     STATUS  PORTS   NAMES
@@ -272,4 +283,31 @@ curl -X POST http://localhost:3000/api/reservations \
 #### Using Postman
 https://github.com/user-attachments/assets/5a7f2c80-455f-4f4f-bc3c-f55ff489aa94
 
+## Rails Setup
+##### [Install Rails on Ubuntu](https://gorails.com/setup/ubuntu/26.04)
+##### [Install Rails on Mac](https://gorails.com/setup/macos/26-tahoe)
+##### [Install Rails on Windows](https://gorails.com/setup/windows/11)
 
+## PostgreSQL Installation
+##### [Install PostgreSQL on Ubuntu](https://www.postgresql.org/download/linux/ubuntu/)
+##### [Install PostgreSQL on Mac](https://www.postgresql.org/download/macosx/)
+##### [Install PostgreSQL on Windows](https://www.postgresql.org/download/windows/)
+
+## Docker Setup
+##### [Install Docker on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+##### [Install Docker on Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
+##### [Install Docker on Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
+
+
+
+Set RAILS_MASTER_KEY on your .env file
+``` bash
+  # on project folder run
+  echo "RAILS_MASTER_KEY=place-your-production.key-value-here" >> .env
+```
+
+Initialize containers
+``` bash
+  # on project folder run
+  docker compose up --build
+```
