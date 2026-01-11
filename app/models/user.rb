@@ -4,6 +4,11 @@ class User < ApplicationRecord
             format: { with: Rails.application.config.email_regex }
   validate :all_phone_number_must_be_valid
 
+  enum user_type: {
+    guest: 'guest',
+    host: 'host'
+  }
+
   private
 
   def all_phone_number_must_be_valid
