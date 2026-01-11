@@ -9,7 +9,7 @@ class Api::ReservationsController < AuthenticatedController
     if command.success?
       render :show, status: :created, locals: { reservation: command.result }
     else
-      render json: { errors: command.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: command.errors.full_messages }, status: :unprocessable_content
     end
   end
 end
