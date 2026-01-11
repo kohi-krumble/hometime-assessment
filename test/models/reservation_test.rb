@@ -76,6 +76,23 @@ class ReservationTest < ActiveSupport::TestCase
     end
   end
 
+  test "Fails to create overlapping accepted reservations" do
+    create(:reservation, 
+      start_at: Date.today + 1.week, 
+      end_at: Date.today + 2.weeks, 
+      status: :accepted
+    )
+
+    overlapping_reservation = build(:reservation, 
+      start_at: Date.today + 10.days, 
+      end_at: Date.today + 15.days, 
+      status: :accepted
+    )
+
+    assert_not overlapping_reservation.valid?
+    assert_includes overlapping_reservation.errors[:base], "selected date is not available"
+  end
+
   test "Successfully creates a reservation with custom details" do
     custom_details = {
       number_of_guests: 2,
