@@ -294,6 +294,7 @@ https://github.com/user-attachments/assets/5a7f2c80-455f-4f4f-bc3c-f55ff489aa94
 ##### [Install PostgreSQL on Windows](https://www.postgresql.org/download/windows/)
 
 ## Docker Setup
+<a name="docker-setup"></a>
 ##### [Install Docker on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 ##### [Install Docker on Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
 ##### [Install Docker on Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
