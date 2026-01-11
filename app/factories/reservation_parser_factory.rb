@@ -6,6 +6,9 @@ class ReservationParserFactory
 
   def get_parser(version: nil)
     return parser_by_version(version) if version.present?
+
+    # TODO: CHECK request.domain
+    # ex. request.domain == "airbnb.co.uk" 
     return parser_v2 if @payload.key?(:reservation)
     return parser_v1
   end
