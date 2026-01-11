@@ -2,7 +2,12 @@ json.reservation_id reservation.id
 json.start_date reservation.start_at
 json.end_date reservation.end_at
 json.nights reservation.no_of_nights
-json.extract! reservation, :status, :payout_amount, :security_amount, :total_amount, :currency
+json.status reservation.status
+
+json.payout_amount reservation.payout_amount.to_s
+json.security_amount reservation.security_amount.to_s
+json.total_amount reservation.total_amount.to_s
+json.currency reservation.currency
 
 json.details do
   json.localized_description reservation.details.localized_description
