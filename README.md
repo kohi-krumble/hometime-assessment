@@ -8,10 +8,10 @@ This app has one end point that can support two different payload structure.
 
 ## Features
 
-- Tests will automaticall run when creating pull request or pushing to master branch via Github workflows
+- Tests will automatically run when creating pull request or pushing to master branch via Github workflows
 - Quick setup using Docker
 - Authentication using [JWT](https://github.com/jwt/ruby-jwt)
-- Phone number validations using [Phonelib](https://github.com/daddyz/phonelib) gem
+- Phone number validations using [Phonelib](https://github.com/daddyz/phonelib)
 - Currency handling using [Money-Rails](https://github.com/RubyMoney/money-rails)
 
 ## Run Locally
