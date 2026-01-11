@@ -17,6 +17,6 @@ json.guest do
   json.first_name reservation.guest.first_name
   json.last_name reservation.guest.last_name
   json.email reservation.guest.email
-  json.phone_numbers reservation.guest.phone_numbers
+  json.phone_numbers reservation.guest.phone_numbers.map(&:e164)
 end
 
