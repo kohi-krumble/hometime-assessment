@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-  belongs_to :guest, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :guest, class_name: 'Guest', foreign_key: 'user_id'
 
   validates :no_of_nights, numericality: { only_integer: true, greater_than: 0 }
   validates :currency, presence: true
