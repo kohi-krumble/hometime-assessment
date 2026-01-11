@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:17.6
+    container_name: hometime-assessment-postgres-17.6
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command:
+      "postgres -c 'max_connections=500'"
+    environment:
+      - POSTGRES_DB=hometime_assessment_development
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5433:5432"
+  web:
+    build: .
+    image: hometime-assessment
+    command:
+      "./bin/rails server -b 0.0.0.0 -p 3000"
+    environment:
+      - RAILS_ENV=production
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+      - DATABASE_URL=postgresql://postgres:password@db:5432/hometime_assessment_development
+      - FORCE_SSL=true
+    # volumes: # uncomment me to use for development
+    #   - .:/rails
+    # develop:
+    #   watch:
+    #     - action: rebuild
+    #       path: .
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data: {}
