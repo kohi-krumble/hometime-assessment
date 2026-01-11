@@ -15,8 +15,6 @@ This app has one end point that can support two different payload structure.
 - Currency handling using [Money-Rails](https://github.com/RubyMoney/money-rails)
 
 ## Run Locally
-
-Prerequisite
 - [Setup Rails on your machine](#rails-setup)
 - [PostgreSQL installation](#postgresql-installation)
 - Or run with [Docker](#docker-setup)
@@ -37,15 +35,24 @@ Install dependencies
   bundle install
 ```
 
-Generaate credentials key
+Generate credentials key
 ``` bash
-  # development
-  EDITOR="your-preferred-editor --wait" rails credentials:edit --environment development
+  # development using vscode
+  EDITOR="code --wait" rails credentials:edit --environment development
   # This will create a development.key file on you config/credentials/
 
-  # production
-  EDITOR="your-preferred-editor --wait" rails credentials:edit --environment production
+  # production using nano
+  EDITOR=nano rails credentials:edit --environment production
   # This will create a production.key file on you config/credentials/
+
+  # or using vim
+  EDITOR=vim rails credentials:edit --environment production
+```
+
+Setup database config file
+```bash
+  cp config/database.yml.sample config/database.yml
+  # then replace your host, username, password, and database name
 ```
 
 Initialize database
