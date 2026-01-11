@@ -22,6 +22,8 @@ gem "bootsnap", require: false
 
 gem "money-rails", "~> 2.0"
 
+gem "phonelib", "~> 0.10.15"
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
