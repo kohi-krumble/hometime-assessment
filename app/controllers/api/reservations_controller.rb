@@ -3,8 +3,13 @@ class Api::ReservationsController < AuthenticatedController
 
   def create
     reservation_params = Reservation::PayloadParser.new(parser.new(params)).parse
+    command = CreateReservation.call(reservation_params)
 
-    render json: reservation_params, status: :created
+    if command.success?
+      render :show, status: :created, locals: { reservation: command.result }
+    else
+      render json: { errors: command.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   private
