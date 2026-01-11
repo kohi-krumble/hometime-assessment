@@ -7,4 +7,6 @@ class User < ApplicationRecord
     guest: 'guest',
     host: 'host'
   }
+
+  attribute :phone_numbers, User::PhoneNumbersType.new
 end
