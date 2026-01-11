@@ -6,6 +6,8 @@ class Reservation::DetailsType < ActiveRecord::Type::Value
   end
 
   def cast(value)
+    return {} if value.blank?
+
     Reservation::Details.new(value)
   end
 

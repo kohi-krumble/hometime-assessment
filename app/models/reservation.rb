@@ -11,7 +11,7 @@ class Reservation < ApplicationRecord
            numericality: { greater_than_or_equal_to: 0 }
   monetize :total_amount_cents, with_model_currency: :currency,
            numericality: { greater_than_or_equal_to: 0 }
-  validate :details_number_of_guests_consistency
+  validates :details, reservation_details: true
 
   enum status: {
     pending: 'pending',
@@ -27,11 +27,5 @@ class Reservation < ApplicationRecord
     return if end_at > start_at
 
     errors.add(:end_at, 'must be after the start date')
-  end
-
-  def details_number_of_guests_consistency
-    return if details.is_guest_count_valid?
-
-    errors.add(:details, details.error)
   end
 end
