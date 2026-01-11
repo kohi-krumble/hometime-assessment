@@ -20,6 +20,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "jwt", "~> 3.1"
+
 gem "money-rails", "~> 2.0"
 
 gem "phonelib", "~> 0.10.15"
@@ -41,5 +43,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
-
