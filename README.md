@@ -124,11 +124,11 @@ Start the server
 | total_paid_amount_accurate | `Decimal` | **Required**. **Non-negative**.  |
 | host_currency | `string` | *Optional*. Defaults to AUD  |
 | guest_id | `Integer` | **Required**. Guest ID |
-| guest_first_name | `String` | **Required**. Guest first name |
+| guest_first_name | `String` | *Optional*. Guest first name |
 | guest_last_name | `String` | *Optional*. Guest last name |
-| guest_phone_numbers | `[String]` | **Required**. Guest phone number |
-| guest_email | `String` | **Required**. Guest email |
-| [guest_details](#guest-details-parameter) | `JSON` | **Required**. Guest who made the reservation  |
+| guest_phone_numbers | `[String]` | *Optional*. Guest phone number |
+| guest_email | `String` | *Optional*. Guest email |
+| [guest_details](#guest-details-parameter) | `JSON` | **Required**. Guest details on the reservation  |
 
 
 ##### guest_details parameter
