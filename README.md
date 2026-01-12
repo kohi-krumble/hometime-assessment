@@ -97,10 +97,10 @@ Start the server
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | id | `Integer` | **Required**. Guest ID |
-| first_name | `String` | **Required**. Guest first name |
+| first_name | `String` | *Optional*. Guest first name |
 | last_name | `String` | *Optional*. Guest last name |
-| phone | `String` | **Required**. Guest phone number |
-| email | `String` | **Required**. Guest email |
+| phone | `String` | *Optional*. Guest phone number |
+| email | `String` | *Optional*. Guest email |
 
 
 
